@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hackjam: Todo</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="dark-theme">
+    <!-- Banner -->
+    <div class="banner">
+      <svg
+        width="23"
+        height="30"
+        viewBox="0 0 23 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="hackjam-logo-icon"
+          d="M1.49875e-05 1.3407e-07L0 27.0196H9.51241L9.51242 21.1141H7.0942L7.09419 24.0768H2.41737L2.41738 2.67163H7.0942V8.74556V18.484H9.74119V18.4963H13.4765V30H23V2.90389H13.4765V5.57552H20.5835V27.0196H15.8939V18.1491H15.9058V8.74556H9.51242V1.3407e-07H1.49875e-05ZM9.51242 11.4162H13.4884V15.4775H9.51242V11.4162Z"
+          fill="white"
+        />
+      </svg>
+      <a href="#"
+        >Build this app by yourself <i class="fa fa-long-arrow-right"></i
+      ></a>
+    </div>
+    <!-- Banner -->
+
+    <!-- Switch Theme -->
+    <div class="switch-theme">
+      <label class="switch">
+        <input type="checkbox" class="switchCheckbox" checked />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <!-- Switch Theme -->
+
+    <div class="bgimage">
+      <img src="./img/dots.svg" alt="" />
+    </div>
+    <div class="todo-wrapper">
+      <h1>What do you want to do?</h1>
+
+      <!-- Add Todo -->
+      <form class="addtodoform">
+        <input
+          type="text"
+          name="title"
+          placeholder="Write something, don’t be shy!"
+        />
+      </form>
+      <!-- Add Todo -->
+
+      <!-- Todos -->
+      <div class="todos-container">
+        <div class="todos-head">
+          <div class="task-completed">5 of 10 Completed</div>
+          <div class="filter">
+            <ul>
+              <li><a href="#" class="active">All</a></li>
+              <li><a href="#">Active</a></li>
+              <li><a href="#">Completed</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Todo Item -->
+        <div class="todo-item">
+          <div class="todo-item-top">
+            <input type="checkbox" id="taskid01" class="taskcheckbox" />
+            <label for="taskid01" class="title"
+              >Design a landing page for techjargon minibook</label
+            >
+            <div class="options">
+              <span class="show-options"><i class="fa fa-ellipsis-v"></i></span>
+              <div class="options-dropdown">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+                <button class="addlabelbtn">Add label</button>
+              </div>
+              <div class="addlabel">
+                <h6>Add Label</h6>
+                <form>
+                  <input
+                    type="text"
+                    name="addlabel"
+                    class="addlabelInput"
+                    placeholder="Enter label name"
+                  />
+                </form>
+                <ul class="addlabel-list">
+                  <li>
+                    <input type="checkbox" id="techjargon" />
+                    <label for="techjargon">Techjargon</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="minibook" />
+                    <label for="minibook">Mini Book</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="label-list">
+            <span class="label">Techjargon</span>
+            <span class="label">Today</span>
+          </div>
+        </div>
+        <!-- Todo Item -->
+
+        <!-- Todo Item -->
+        <div class="todo-item">
+          <div class="todo-item-top">
+            <input type="checkbox" id="taskid02" class="taskcheckbox" />
+            <label for="taskid02" class="title"
+              >Design a landing page for techjargon minibook</label
+            >
+            <div class="options">
+              <span class="show-options"><i class="fa fa-ellipsis-v"></i></span>
+              <div class="options-dropdown">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+                <button class="addlabelbtn">Add label</button>
+              </div>
+              <div class="addlabel">
+                <h6>Add Label</h6>
+                <form>
+                  <input
+                    type="text"
+                    name="addlabel"
+                    class="addlabelInput"
+                    placeholder="Enter label name"
+                  />
+                </form>
+                <ul class="addlabel-list">
+                  <li>
+                    <input type="checkbox" id="techjargon" />
+                    <label for="techjargon">Techjargon</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="minibook" />
+                    <label for="minibook">Mini Book</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Todo Item -->
+
+        <button class="clearall">Clear Completed</button>
+      </div>
+      <!-- Todos -->
+    </div>
+    <footer>
+      <p>©2021 HackJam, All rights reserved</p>
+    </footer>
+
+    <script src="./custom.js"></script>
+  </body>
+</html>
