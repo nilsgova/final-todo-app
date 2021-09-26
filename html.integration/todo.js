@@ -2,16 +2,21 @@ let doneBTN;
 let todosList;
 let addBtn;
 let allBtn;
-let activeBtn;
-let completedBtn;
-let showOptionsBtns;
+let filterButtons;
+let clearCompletedBtn;
+let todos;
 
 window.addEventListener('DOMContentLoaded', () => {
     todosList = document.getElementById("all-todos");
-    console.log(todosList);
+    filterButtons = document.getElementById("filter");
+    filterButtons.addEventListener("click",filterClass)
     addBtn = document.getElementById("addButton");
     addBtn.addEventListener("click",createItem);
+    ItemButtons();
+    clearCompletedBtn = document.getElementById("clearall");
+    clearCompletedBtn.addEventListener("click",removeAllCompleted);
     selectorsDropdown();
+    completedDisplay();
 });
 
 // create new todo item
@@ -31,6 +36,7 @@ function createItem(event){
     addOptions(todoItemTop);
     todoItem.appendChild(todoItemTop);
     todosList.append(todoItem);
+    completedDisplay()
     clearField("Write something, don’t be shy!");
 };
 
@@ -50,12 +56,6 @@ function clearField(value) {
     const inputfield = document.getElementById("input");
     inputfield.value = "";
     inputfield.placeholder = value;
-}
-
-// get all active items
-function activeTodos(){
-    const allTodos = document.getElementsByClassName("todo-item");
-    return allTodos;
 }
 
 // create new element and add a classname to it
@@ -116,4 +116,70 @@ function addOptions(parrentItem){
     options.appendChild(buttonContainer);
     options.appendChild(addLabel);
     parrentItem.append(options);
+}
+
+///////// Item buttons 
+function ItemButtons() {
+    todosList.addEventListener("click", e => {
+        if(e.target.className === "taskcheckbox"){
+            let toAdjustItem = e.target.parentNode.parentNode;
+            toAdjustItem.classList.toggle("done-item");
+            completedDisplay();
+        }
+        if(e.target.className === "delete"){
+            let parentNodeItem = e.target.parentNode.parentNode.parentNode.parentNode;
+            parentNodeItem.parentNode.removeChild(parentNodeItem);
+        }
+    })
+};
+
+
+//remove all completed items
+function removeAllCompleted(){
+    let todos = document.getElementsByClassName("todo-item");
+    for (let i = 0; i < todos.length; i++) {
+        if(todos[i].classList.contains("done-item")){
+            todos[i].parentNode.removeChild(todos[i]);
+        }
+        
+    }
+}
+
+// filter by class
+function filterClass(e){
+    e.preventDefault();
+    let todos = document.getElementsByClassName("todo-item");
+        if(e.target.className === "all"){
+            showAllItems(todos)
+        }
+        if(e.target.className === "allCompleted"){
+            showAllItems(todos)
+            for (let i = 0; i < todos.length; i++) {
+                if(!todos[i].classList.contains("done-item")){
+                    todos[i].classList.toggle("hide-item");
+                }
+              }
+        }
+        if(e.target.className === "allActive"){
+            showAllItems(todos)
+            for (let i = 0; i < todos.length; i++) {
+                if(todos[i].classList.contains("done-item")){
+                    todos[i].classList.toggle("hide-item");
+                }
+              }
+        }
+}
+// show all items
+function showAllItems(todos){
+    for(let i = 0; i < todos.length; i++){
+        todos[i].classList.remove("hide-item");
+    }
+}
+
+// completed items
+function completedDisplay(){
+    let totalTasks = document.getElementsByClassName("todo-item");
+    let totalTasksCompleted = document.getElementsByClassName("done-item");
+    let tasksCompleted = document.querySelectorAll(".task-completed")[0];
+    tasksCompleted.innerText = totalTasksCompleted.length +" of "+totalTasks.length+" Completed ";
 }

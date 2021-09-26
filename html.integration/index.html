@@ -48,11 +48,11 @@
       <div id="all-todos">
         <div class="todos-head">
           <div class="task-completed">5 of 10 Completed</div>
-          <div class="filter">
+          <div class="filter" id="filter">
             <ul>
-              <li><a href="#" id ="all" class="active">All</a></li>
-              <li><a href="#" id="active">Active</a></li>
-              <li><a href="#" id="completed">Completed</a></li>
+              <li><a href="#" class ="all" class="active">All</a></li>
+              <li><a href="#" class="allActive">Active</a></li>
+              <li><a href="#" class="allCompleted">Completed</a></li>
             </ul>
           </div>
         </div>
@@ -127,10 +127,7 @@
         </div>
         <!-- Todo Item -->
       </div>
-      <button class="clearall">Clear Completed</button>
-    <div id="completed-items">
-
-    </div>
+      <button class="clearall" id="clearall">Clear Completed</button>
     </div>
     <!-- Todos -->
   </div>
