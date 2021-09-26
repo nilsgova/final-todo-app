@@ -45,88 +45,92 @@
 
     <!-- Todos -->
     <div class="todos-container" id="listTodos">
-      <div class="todos-head">
-        <div class="task-completed">5 of 10 Completed</div>
-        <div class="filter">
-          <ul>
-            <li><a href="#" class="active">All</a></li>
-            <li><a href="#">Active</a></li>
-            <li><a href="#">Completed</a></li>
-          </ul>
+      <div id="all-todos">
+        <div class="todos-head">
+          <div class="task-completed">5 of 10 Completed</div>
+          <div class="filter">
+            <ul>
+              <li><a href="#" id ="all" class="active">All</a></li>
+              <li><a href="#" id="active">Active</a></li>
+              <li><a href="#" id="completed">Completed</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <!-- Todo Item -->
-      <div class="todo-item">
-        <div class="todo-item-top">
-          <input type="checkbox" id="taskid01" class="taskcheckbox" />
-          <label for="taskid01" class="title">Design a landing page for techjargon minibook</label>
-          <div class="options">
-            <span class="show-options"><i class="fa fa-ellipsis-v"></i></span>
-            <div class="options-dropdown">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-              <button class="addlabelbtn">Add label</button>
+        <!-- Todo Item -->
+        <div class="todo-item">
+          <div class="todo-item-top">
+            <input type="checkbox" id="taskid01" class="taskcheckbox" />
+            <label for="taskid01" class="title">Design a landing page for techjargon minibook</label>
+            <div class="options">
+              <span class="show-options"><i class="fa fa-ellipsis-v"></i></span>
+              <div class="options-dropdown">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+                <button class="addlabelbtn">Add label</button>
+              </div>
+              <div class="addlabel">
+                <h6>Add Label</h6>
+                <form>
+                  <input type="text" name="addlabel" class="addlabelInput" placeholder="Enter label name" />
+                </form>
+                <ul class="addlabel-list">
+                  <li>
+                    <input type="checkbox" id="techjargon" />
+                    <label for="techjargon">Techjargon</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="minibook" />
+                    <label for="minibook">Mini Book</label>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="addlabel">
-              <h6>Add Label</h6>
-              <form>
-                <input type="text" name="addlabel" class="addlabelInput" placeholder="Enter label name" />
-              </form>
-              <ul class="addlabel-list">
-                <li>
-                  <input type="checkbox" id="techjargon" />
-                  <label for="techjargon">Techjargon</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="minibook" />
-                  <label for="minibook">Mini Book</label>
-                </li>
-              </ul>
+          </div>
+          <div class="label-list">
+            <span class="label">Techjargon</span>
+            <span class="label">Today</span>
+          </div>
+        </div>
+        <!-- Todo Item -->
+
+        <!-- Todo Item -->
+        <div class="todo-item">
+          <div class="todo-item-top">
+            <input type="checkbox" id="taskid02" class="taskcheckbox" />
+            <label for="taskid02" class="title">Design a landing page for techjargon minibook</label>
+            <div class="options">
+              <span class="show-options"><i class="fa fa-ellipsis-v"></i></span>
+              <div class="options-dropdown">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+                <button class="addlabelbtn">Add label</button>
+              </div>
+              <div class="addlabel">
+                <h6>Add Label</h6>
+                <form>
+                  <input type="text" name="addlabel" class="addlabelInput" placeholder="Enter label name" />
+                </form>
+                <ul class="addlabel-list">
+                  <li>
+                    <input type="checkbox" id="techjargon" />
+                    <label for="techjargon">Techjargon</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="minibook" />
+                    <label for="minibook">Mini Book</label>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div class="label-list">
-          <span class="label">Techjargon</span>
-          <span class="label">Today</span>
-        </div>
+        <!-- Todo Item -->
       </div>
-      <!-- Todo Item -->
-
-      <!-- Todo Item -->
-      <div class="todo-item">
-        <div class="todo-item-top">
-          <input type="checkbox" id="taskid02" class="taskcheckbox" />
-          <label for="taskid02" class="title">Design a landing page for techjargon minibook</label>
-          <div class="options">
-            <span class="show-options"><i class="fa fa-ellipsis-v"></i></span>
-            <div class="options-dropdown">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-              <button class="addlabelbtn">Add label</button>
-            </div>
-            <div class="addlabel">
-              <h6>Add Label</h6>
-              <form>
-                <input type="text" name="addlabel" class="addlabelInput" placeholder="Enter label name" />
-              </form>
-              <ul class="addlabel-list">
-                <li>
-                  <input type="checkbox" id="techjargon" />
-                  <label for="techjargon">Techjargon</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="minibook" />
-                  <label for="minibook">Mini Book</label>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Todo Item -->
-
       <button class="clearall">Clear Completed</button>
+    <div id="completed-items">
+
+    </div>
     </div>
     <!-- Todos -->
   </div>
@@ -135,8 +139,8 @@
   </footer>
 
   <script src="./custom.js"></script>
-  <script src="./todo.js" ></script>
-  
+  <script src="./todo.js"></script>
+
 </body>
 
 </html>
