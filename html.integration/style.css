@@ -224,7 +224,7 @@ input:checked + .slider:before {
   text-align: center;
 }
 
-.addtodoform input {
+.addtodoform input, #addButton {
   background: transparent;
   border: 1px solid #f3f3f3;
   height: 80px;
@@ -470,7 +470,7 @@ body.dark-theme {
   color: #fff;
 }
 
-.dark-theme .addtodoform input {
+.dark-theme .addtodoform input, #addButton {
   border-color: var(--border-color);
   box-shadow: none;
 }
@@ -546,9 +546,18 @@ body.dark-theme {
   color: #504e4e;
 }
 
+.button-highlight{
+  background-color: #fa5f1c;
+}
+
 .hide-item{
   visibility: hidden;
   height: 0;
   margin: 0;
   padding: 0;
+}
+
+#addButton{
+  width: auto;
+ padding: 0 30px;
 }

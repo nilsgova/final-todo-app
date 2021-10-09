@@ -129,9 +129,39 @@ function ItemButtons() {
         if(e.target.className === "delete"){
             let parentNodeItem = e.target.parentNode.parentNode.parentNode.parentNode;
             parentNodeItem.parentNode.removeChild(parentNodeItem);
+        }if(e.target.className ==="edit"){
+            if(e.target.innerText === "Edit"){
+                editText(e);
+            }else {
+                saveText(e)
+            }
         }
     })
 };
+
+//editText function
+function editText(e){
+    console.log(e.target.parentNode);
+    let inputText = e.target.parentNode.parentNode.parentNode.childNodes[1]
+    e.target.innerText = "Save";
+    e.target.style.backgroundColor = "#fa5f1c";
+    inputText.style.backgroundColor = "rgb(88 81 81)";
+    inputText.contentEditable = true;
+    console.log(inputText);
+}
+
+
+//saveText function
+function saveText(e) {
+    console.log(e.target);
+    let inputText = e.target.parentNode.parentNode.parentNode.childNodes[1]
+    e.target.innerText = "Edit";
+    e.target.style.backgroundColor = "var(--black)";
+    inputText.style.backgroundColor = "transparent";
+    inputText.contentEditable = false;
+    console.log(inputText);
+    e.target.parentNode.classList.toggle("show");
+}
 
 
 //remove all completed items
@@ -143,6 +173,7 @@ function removeAllCompleted(){
         }
         
     }
+    completedDisplay();
 }
 
 // filter by class
