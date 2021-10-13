@@ -561,3 +561,8 @@ body.dark-theme {
   width: auto;
  padding: 0 30px;
 }
+
+h4 {
+  margin: 20px 0;
+  color: #afafaf;
+}
