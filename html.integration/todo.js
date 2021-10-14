@@ -5,6 +5,15 @@ let allBtn;
 let filterButtons;
 let clearCompletedBtn;
 let todos;
+let arraytodos = [{
+    "task": "Create a todo",
+    "done": true
+},
+{
+    "task": "make it functional",
+    "done": false
+}
+]
 
 window.addEventListener('DOMContentLoaded', () => {
     todosList = document.getElementById("all-todos");
@@ -16,6 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
     clearCompletedBtn = document.getElementById("clearall");
     clearCompletedBtn.addEventListener("click",removeAllCompleted);
     selectorsDropdown();
+    retrieveLocalData()
     completedDisplay();
 });
 
@@ -24,6 +34,12 @@ function createItem(event){
     event.preventDefault();
     event.stopPropagation();
     const myInput = document.getElementById("input").value;
+    const newTodo = {
+        "task": myInput,
+        "done": false
+    };
+    arraytodos.push(newTodo);
+    localStorage.setItem('todos', JSON.stringify(arraytodos));
     // outer DIV
     const todoItem = createNewElement("div","todo-item")
     // top item DIV
@@ -37,6 +53,7 @@ function createItem(event){
     todoItem.appendChild(todoItemTop);
     todosList.append(todoItem);
     completedDisplay()
+    localStorage.setItem('todos', JSON.stringify(arraytodos));
     clearField("Write something, don’t be shy!");
 };
 
@@ -122,13 +139,25 @@ function addOptions(parrentItem){
 function ItemButtons() {
     todosList.addEventListener("click", e => {
         if(e.target.className === "taskcheckbox"){
+            let sibling = e.target.nextElementSibling;
             let toAdjustItem = e.target.parentNode.parentNode;
             toAdjustItem.classList.toggle("done-item");
+            for (var i = arraytodos.length - 1; i >= 0; i--) {
+                if (arraytodos[i].task === sibling.innerText){ 
+                    arraytodos.splice(i, 1);
+                }
+            }
             completedDisplay();
         }
         if(e.target.className === "delete"){
             let parentNodeItem = e.target.parentNode.parentNode.parentNode.parentNode;
             parentNodeItem.parentNode.removeChild(parentNodeItem);
+            for (var i = arraytodos.length - 1; i >= 0; i--) {
+                if (arraytodos[i].done === true){ 
+                    arraytodos.splice(i, 1);
+                }
+            }
+            addToLocalStorage(arraytodos)
         }if(e.target.className ==="edit"){
             if(e.target.innerText === "Edit"){
                 editText(e);
@@ -173,6 +202,12 @@ function removeAllCompleted(){
         }
         
     }
+    for (var i = arraytodos.length - 1; i >= 0; i--) {
+        if (arraytodos[i].done === true){ 
+            arraytodos.splice(i, 1);
+        }
+    }
+    addToLocalStorage(arraytodos)
     completedDisplay();
 }
 
@@ -214,3 +249,44 @@ function completedDisplay(){
     let tasksCompleted = document.querySelectorAll(".task-completed")[0];
     tasksCompleted.innerText = totalTasksCompleted.length +" of "+totalTasks.length+" Completed ";
 }
+
+
+//add todos to local storage
+function addToLocalStorage(arraytodos) {
+    // conver the array to string then store it.
+    localStorage.setItem('todos', JSON.stringify(arraytodos));
+  }
+
+  function renderTodos(array){
+    array.forEach(item => {
+    const myInput = item.task;
+    // outer DIV
+    const todoItem = createNewElement("div","todo-item")
+    if(item.done === true) {
+        todoItem.classList.add('done-item');
+      }
+    // top item DIV
+    const todoItemTop = createNewElement("div","todo-item-top")
+    const inputItem = createNewElement("input","taskcheckbox","checkbox");
+    if(item.done === true) {
+        todoItem.classList.add('done-item');
+        inputItem.checked = true;
+      }
+    const labelItem = createNewElement("label","title");
+    labelItem.innerText = myInput;
+    todoItemTop.appendChild(inputItem);
+    todoItemTop.appendChild(labelItem);
+    addOptions(todoItemTop);
+    todoItem.appendChild(todoItemTop);
+    todosList.append(todoItem);
+    completedDisplay()
+    clearField("Write something, don’t be shy!");
+    });
+  }
+
+  //retrieve data from local storage
+  function retrieveLocalData(){
+    arraytodos = localStorage.getItem("todos");
+    arraytodos = JSON.parse(arraytodos);
+    renderTodos(arraytodos)
+  }
